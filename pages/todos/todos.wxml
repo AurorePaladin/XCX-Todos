@@ -18,6 +18,6 @@
     <view class="footer">
         <text bindtap="toggleAllHandle">Toggle All</text>
         <text wx:if="{{ leftCount }}">{{ leftCount }} {{ leftCount > 1 ? 'items' : 'item'}} left</text>
-        <text>Clear completed</text>
+        <text bindtap="removeAllHandle">Clear completed</text>
     </view>
 </view>

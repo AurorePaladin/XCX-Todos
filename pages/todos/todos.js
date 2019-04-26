@@ -48,8 +48,9 @@ Page({
 
   removeTodoHandle: function (e) {
     var todos = this.data.todos
-    var leftCount = this.data.leftCount - 1
-    todos.splice(e.currentTarget.dataset.index, 1)
+    // item 就是splice方法中移除掉的元素
+    var item = todos.splice(e.currentTarget.dataset.index, 1)[0]
+    var leftCount = this.data.leftCount - (item.completed ? 0 : 1)
     // todos 中会移除掉 index 所指向的元素
     this.setData({ todos: todos, leftCount: leftCount })
   },
@@ -62,7 +63,24 @@ Page({
     todos.forEach(function (item) {
       item.completed = _this.data.allCompleted
     })
-    this.setData({ todos: todos })
-    console.log(1)
+    var leftCount = this.data.allCompleted ? 0 : this.data.todos.length
+    this.setData({ todos: todos, leftCount: leftCount })
+  },
+
+  removeAllHandle () {
+    // 第一种
+    // var todos = []
+    // this.data.todos.forEach(function (item) {
+    //   if (!item.completed) {
+    //     todos.push(item)
+    //   }
+    // })
+    // this.setData({ todos: todos})
+
+    // 第二种
+    var todos = this.data.todos.filter(function (item) {
+      return !item.completed
+    })
+    this.setData({ todos:todos })
   }
 })
