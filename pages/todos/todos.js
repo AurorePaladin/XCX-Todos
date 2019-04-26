@@ -17,8 +17,9 @@ Page({
   // 先让按钮点击时执行一段代码
   addTodoHandle: function (e) {
     // 当添加按钮点击事件发生时执行的函数
+    if (!this.data.search) return
     var todos = this.data.todos
-    this.data.todos.push({
+    todos.push({
       name: this.data.search,
       completed: false
     })
