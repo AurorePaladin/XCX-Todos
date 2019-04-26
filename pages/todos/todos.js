@@ -43,5 +43,13 @@ Page({
     // 根据当前任务的完成状态增加/减少一个
     var leftCount = this.data.leftCount + (item.completed ? -1 : 1)
     this.setData({ todos: this.data.todos, leftCount: leftCount })
+  },
+
+  removeTodoHandle: function (e) {
+    var todos = this.data.todos
+    var leftCount = this.data.leftCount - 1
+    todos.splice(e.currentTarget.dataset.index, 1)
+    // todos 中会移除掉 index 所指向的元素
+    this.setData({ todos: todos, leftCount: leftCount })
   }
 })

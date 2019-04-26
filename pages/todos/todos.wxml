@@ -12,7 +12,7 @@
         <view class="item{{ item.completed ? ' completed' : '' }}" wx:for="{{ todos }}" wx:key="id" bindtap="toggleTodoHandle" data-index="{{ index }}">
             <icon type="{{ item.completed ? 'success' : 'circle' }}"/>
             <text>{{ item.name }}</text>
-            <icon type="clear" size="16"/>
+            <icon type="clear" size="16" catchtap="removeTodoHandle" data-index="{{ index }}"/>
         </view>
     </view>
     <view class="footer">
