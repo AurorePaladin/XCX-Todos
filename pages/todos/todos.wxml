@@ -1,28 +1,22 @@
 <view class="container">
     <view class="search">
         <image src="../../image/plus.png"/>
-        <input type="text" placeholder="Anything here..."/>
+        <input
+        type="text"
+        placeholder="Anything here..."
+        value="{{ search }}"
+        />
     </view>
     <view class="todos">
-        <view class="item">
-            <icon type="success"/>
-            <text>Learning HTML</text>
-            <icon type="clear" size="16"/>
-        </view>
-        <view class="item">
-            <icon type="success"/>
-            <text>Learning CSS</text>
-            <icon type="clear" size="16"/>
-        </view>
-        <view class="item">
-            <icon type="success"/>
-            <text>Learning JavaScript</text>
+        <view class="item{{ item.completed ? ' completed' : '' }}" wx:for="{{ todos }}">
+            <icon type="{{ item.completed ? 'success' : 'circle' }}"/>
+            <text>{{ item.name }}</text>
             <icon type="clear" size="16"/>
         </view>
     </view>
     <view class="footer">
         <text>Toggle All</text>
-        <text>2 items left</text>
+        <text>{{ todos.length }} items left</text>
         <text>Clear completed</text>
     </view>
 </view>
