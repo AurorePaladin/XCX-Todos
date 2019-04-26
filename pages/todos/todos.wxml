@@ -1,14 +1,15 @@
 <view class="container">
     <view class="search">
-        <image src="../../image/plus.png"/>
+        <image src="../../image/plus.png" bindtap="addTodoHandle"/>
         <input
         type="text"
         placeholder="Anything here..."
         value="{{ search }}"
+        bindinput="inputChangeHandle"
         />
     </view>
     <view class="todos">
-        <view class="item{{ item.completed ? ' completed' : '' }}" wx:for="{{ todos }}">
+        <view class="item{{ item.completed ? ' completed' : '' }}" wx:for="{{ todos }}" wx:key="id">
             <icon type="{{ item.completed ? 'success' : 'circle' }}"/>
             <text>{{ item.name }}</text>
             <icon type="clear" size="16"/>
