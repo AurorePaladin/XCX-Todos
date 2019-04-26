@@ -17,7 +17,7 @@
     </view>
     <view class="footer">
         <text>Toggle All</text>
-        <text>{{ todos.length }} items left</text>
+        <text wx:if="{{ leftCount }}">{{ leftCount }} {{ leftCount > 1 ? 'items' : 'item'}} left</text>
         <text>Clear completed</text>
     </view>
 </view>
