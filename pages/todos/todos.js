@@ -8,7 +8,8 @@ Page({
       { name: 'Learning HTML', completed: true },
       { name: 'Learning CSS', completed: false },
     ],
-    leftCount: 2
+    leftCount: 2,
+    allCompleted: false
   },
   // 拿到文本框里面的值
   // 由于小程序的数据绑定是单向的 必须要给文本注册改变事件
@@ -51,5 +52,17 @@ Page({
     todos.splice(e.currentTarget.dataset.index, 1)
     // todos 中会移除掉 index 所指向的元素
     this.setData({ todos: todos, leftCount: leftCount })
+  },
+
+  toggleAllHandle: function () {
+    // this 在这里永远指向的是当前页面对面
+    this.data.allCompleted = !this.data.allCompleted
+    var todos = this.data.todos
+    var _this = this
+    todos.forEach(function (item) {
+      item.completed = _this.data.allCompleted
+    })
+    this.setData({ todos: todos })
+    console.log(1)
   }
 })
